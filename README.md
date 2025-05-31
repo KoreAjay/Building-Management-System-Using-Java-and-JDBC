@@ -1,8 +1,5 @@
-# Building-Management-System-Using-Java-and-JDBC
-Building Management System
+# 🏢 Building Management System –Using-Java-and-JDBC
 # Building Management Made Easy and Smart Resident & Rent Tracker
-
-# 🏢 Building Management System – Java Console Application
 
 ## 🔷 Description
 
