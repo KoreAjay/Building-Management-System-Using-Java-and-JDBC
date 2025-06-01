@@ -1,0 +1,61 @@
+ create database building_db;
+  use building_db;
+  
+  CREATE TABLE Admin(
+    -> ID INT AUTO_INCREMENT PRIMARY KEY,
+    -> USERNAME VARCHAR(20),
+    -> PASSWORD VARCHAR(10)
+    -> );
+	
+	CREATE TABLE Flat(
+    -> FlatID INT AUTO_INCREMENT PRIMARY KEY,
+    -> FlatNumber VARCHAR(10) NOT NULL,
+    -> FloorNumber INT,
+    -> Block VARCHAR(10),
+    -> Type VARCHAR(50),
+    -> Status VARCHAR(20)
+    -> );
+	
+	CREATE TABLE Tenant (
+    TenantID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100) NOT NULL,
+    ContactNumber VARCHAR(15) NOT NULL,
+    Email VARCHAR(100),
+    IdProofType VARCHAR(20),
+    IdNumber VARCHAR(30),
+    Rent INT NOT NULL,
+    Deposit INT DEFAULT 0,
+    FlatID INT NOT NULL,
+    JoinDate DATE,
+    
+    FOREIGN KEY (FlatID) REFERENCES Flat(FlatID)
+);
+
+CREATE TABLE RentPayment (
+    PaymentID INT PRIMARY KEY AUTO_INCREMENT,
+    TenantID INT,
+    FlatID INT,
+    RentAmount DECIMAL(10, 2),
+    LightBill DECIMAL(10, 2),
+    PaymentDate DATE,
+    PaymentMode VARCHAR(50),
+    TransactionId VARCHAR(50),
+    TotalBill DECIMAL(10, 2),
+    Remarks VARCHAR(200),
+
+    FOREIGN KEY (TenantID) REFERENCES Tenant(TenantID),
+    FOREIGN KEY (FlatID) REFERENCES Flat(FlatID)
+);
+
+CREATE TABLE Maintenance (
+    MaintenanceID INT PRIMARY KEY AUTO_INCREMENT,
+    Date VARCHAR(20), 
+    Description VARCHAR(200),
+    Amount DECIMAL(10, 2),
+    PaymentMode VARCHAR(20),
+    TransactionId VARCHAR(50),
+    Status VARCHAR(15)
+);
+
+
+//---@copyRight2025 v.2.0 AllReserved By Ajay Kore
